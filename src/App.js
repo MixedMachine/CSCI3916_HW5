@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import MovieHeader from './components/movieheader';
-import MovieList from './components/movielist';
-import Movie from './components/movie';
+// import MovieList from './components/movielist';
+// import Movie from './components/movie';
 import Authentication from './components/authentication';
 import {HashRouter, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
