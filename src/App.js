@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import MovieHeader from './components/movieheader';
-// import MovieList from './components/movielist';
+ import MovieList from './components/movielist';
 // import Movie from './components/movie';
 import Authentication from './components/authentication';
 import {HashRouter, Route} from 'react-router-dom';
@@ -16,7 +16,7 @@ function App() {
           <div>
             <MovieHeader />
             {/*<Route exact path="/" render={()=><MovieList />}/>*/}
-            {/*<Route exact path="/movielist" render={()=><MovieList />}/>*/}
+            <Route exact path="/movielist" render={()=><MovieList />}/>
             {/*<Route exact path="/movie/:movieId" render={()=><Movie />}/>*/}
             <Route path="/signin" render={()=><Authentication />}/>
           </div>

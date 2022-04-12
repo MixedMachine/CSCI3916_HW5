@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { fetchMovies } from "../actions/movieActions";
 import { setMovie } from "../actions/movieActions";
-import {connect} from 'react-redux';
-import {Image, Nav} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Image, Nav } from 'react-bootstrap';
 import { Carousel } from 'react-bootstrap';
 import { BsStarFill} from 'react-icons/bs'
 import {LinkContainer} from 'react-router-bootstrap';
@@ -33,12 +33,14 @@ class MovieList extends Component {
             if (!movieList) {
                 return <div>Loading....</div>
             }
-
+            if (!movieList.is_array) {
+                return <div>Loading....</div>
+            }
             return (
                 <Carousel onSelect={this.handleSelect}>
                     {movieList.map((movie) =>
                         <Carousel.Item key={movie._id}>
-                            <div>
+                            <div> Hello
                                 <LinkContainer to={'/movie/'+movie._id} onClick={()=>this.handleClick(movie)}>
                                     <Nav.Link><Image className="image" src={movie.imageUrl} thumbnail /></Nav.Link>
                                 </LinkContainer>
