@@ -33,21 +33,29 @@ class MovieList extends Component {
             if (!movieList) {
                 return <div>Loading....</div>
             }
-            if (!movieList.is_array) {
-                return <div>Loading....</div>
-            }
+
             return (
                 <Carousel onSelect={this.handleSelect}>
                     {movieList.map((movie) =>
                         <Carousel.Item key={movie._id}>
                             <div> Hello
                                 <LinkContainer to={'/movie/'+movie._id} onClick={()=>this.handleClick(movie)}>
-                                    <Nav.Link><Image className="image" src={movie.imageUrl} thumbnail /></Nav.Link>
+                                    <Nav.Link><Image className="image" src={movie.imageUrl} thumbnail  width={250} height={300}/></Nav.Link>
                                 </LinkContainer>
                             </div>
-                            <Carousel.Caption>
+                            <Carousel.Caption style={{
+                                textShadow: '1px 1px 10px #000, 1px 1px 10px #000',
+                            }}>
+                                <div style={{
+                                    width: '250px',
+                                    display: 'inline-block',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                                }}>
                                 <h3>{movie.title}</h3>
-                                <BsStarFill glyph={'star'} /> {movie.avgRating} &nbsp;&nbsp; {movie.releaseDate}
+                                <BsStarFill glyph={'star'} style={{
+                                    fill: 'yellow',
+                                }}/> {movie.avgRating} &nbsp;&nbsp; {movie.year}
+                                </div>
                             </Carousel.Caption>
                         </Carousel.Item>
                     )}
