@@ -41,6 +41,7 @@ export function fetchMovie(movieId) {
             },
             mode: 'cors',
         }).then((response) => {
+            console.log(`Sent req to ${env.REACT_APP_API_URL}/movies?_id=${movieId}&reviews=true`)
             if (!response.ok) {
                 throw Error(response.statusText);
             }
@@ -63,6 +64,7 @@ export function fetchMovies() {
             },
             mode: 'cors',
         }).then((response) => {
+            console.log(`Sent req to ${env.REACT_APP_API_URL}/movies?reviews=true`)
             if (!response.ok) {
                 throw Error(response.statusText);
             }
