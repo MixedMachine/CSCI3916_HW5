@@ -32,7 +32,7 @@ export function setMovie(movie) {
 export function fetchMovie(movieId) {
     const env = runtimeEnv();
     return dispatch => {
-        return fetch(`https://michaelmartinez-csci3916-hw4.herokuapp.com/movies/?_id=${movieId}&reviews=true`, {
+        return fetch(`${env.REACT_APP_API_URL}/movies/?_id=${movieId}&reviews=true`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -41,7 +41,6 @@ export function fetchMovie(movieId) {
             },
             mode: 'cors',
         }).then((response) => {
-            console.log(`Sent req to ${env.REACT_APP_API_URL}/movies?_id=${movieId}&reviews=true`)
             if (!response.ok) {
                 throw Error(response.statusText);
             }
@@ -55,7 +54,7 @@ export function fetchMovie(movieId) {
 export function fetchMovies() {
     const env = runtimeEnv();
     return dispatch => {
-        return fetch(`https://michaelmartinez-csci3916-hw4.herokuapp.com/movies?reviews=true`, {
+        return fetch(`${env.REACT_APP_API_URL}/movies?reviews=true`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -64,7 +63,6 @@ export function fetchMovies() {
             },
             mode: 'cors',
         }).then((response) => {
-            console.log(`Sent req to ${env.REACT_APP_API_URL}/movies?reviews=true`)
             if (!response.ok) {
                 throw Error(response.statusText);
             }

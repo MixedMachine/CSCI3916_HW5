@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { fetchMovie } from "../actions/movieActions";
+import NewReview from "./newreview";
 import {connect} from 'react-redux';
-import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import {Card, ListGroup, ListGroupItem} from 'react-bootstrap';
 import { BsStarFill } from 'react-icons/bs'
 import { Image } from 'react-bootstrap';
 
@@ -34,16 +35,22 @@ class MovieDetail extends Component {
                                     <b>{actor.actorName}</b> {actor.characterName}
                                 </p>)}
                         </ListGroupItem>
-                        <ListGroupItem><h4><BsStarFill/> {this.props.selectedMovie.avgRating}</h4></ListGroupItem>
+                        <ListGroupItem><h4><BsStarFill/> {this.props.selectedMovie.avgRating.toFixed(1)}</h4></ListGroupItem>
                     </ListGroup>
                     <Card.Body>
                         {this.props.selectedMovie.reviews.map((review, i) =>
                             <p key={i}>
-                                <b>{review.username}</b>&nbsp; {review.review}
-                                &nbsp;  <BsStarFill /> {review.rating} &nbsp; {review.quote}
+                                <h6 style={{display:'flex', justifyContent:'left'}}>
+                                    <b>{review.username}</b> &nbsp; | {review.name} |  &nbsp; <BsStarFill /> {review.rating} <br></br>
+                                </h6>
+                                <div  style={{display:'flex', justifyContent:'left'}}>
+                                    {review.quote}
+                                </div>
+                                <hr></hr>
                             </p>
                         )}
                     </Card.Body>
+                    <NewReview id={this.props.selectedMovie._id} />
                 </Card>
             )
         }
